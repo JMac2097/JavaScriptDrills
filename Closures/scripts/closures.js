@@ -1,0 +1,1 @@
+console.log('closures.js loaded');
