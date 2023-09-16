@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/task1.css" />
     <title>JS Drills -- Closures -- Task 1 -- Accordion</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>JS Drills -- Closures -- Task 1 -- Accordion</h1>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">Section 1</div>
+        <div class="accordion-content">Content for Section 1</div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Section 2</div>
+        <div class="accordion-content">Content for Section 2</div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Section 3</div>
+        <div class="accordion-content">Content for Section 3</div>
+      </div>
+    </div>
+    <div class="explanation">
+    <p>
+    A closure is a JavaScript feature that allows a function to remember and access variables from its containing (enclosing) function's scope, even after that containing function has finished executing. Closures are created when a function is defined within another function and references variables from the outer function.
+    </p>
+    <p>
+        The entire JavaScript code is wrapped within an IIFE (Immediately Invoked Function Expression). An IIFE is a function that is defined and executed immediately after its creation. This pattern is often used to create a new scope, preventing variables and functions from polluting the global scope.
+    </p>
+    <p>
+        Inside the IIFE, we have access to the outer function's scope, which includes the accordionItems, closeAllAccordionItems, and toggleAccordion functions.
+        These functions and variables are defined within the IIFE's scope but are still accessible to the inner functions.
+    </p>
+    <p>
+        The toggleAccordion function is defined within the IIFE and has access to the accordionItems variable from its containing scope. It also has access to the closeAllAccordionItems function.<br/>
+        When toggleAccordion is called in response to a click event on an accordion item's header, it closes all accordion items by calling closeAllAccordionItems, ensuring that only one item can be open at a time. Then, it toggles the 'active' class on the clicked item's content, either opening or closing it.
+    </p>
+    <p>
+        The addEventListener method is used to attach a click event listener to each accordion item's header within the accordionItems.forEach loop. When a header is clicked, the toggleAccordion function is invoked. Since toggleAccordion is a closure, it remembers its containing function's scope, including the closeAllAccordionItems function and the accordionItems variable, allowing it to work with those variables correctly.
+    </p>
+    <p>
+        In summary, the closure in this code allows the toggleAccordion function to access and manipulate variables and functions from its containing scope, such as accordionItems and closeAllAccordionItems. This enables the accordion functionality to open and close items while ensuring that only one item can be open at a time. The closure concept keeps the state of the accordion encapsulated and isolated within the accordion code.
+    </p>
+
     <a href="../closures.html">Back to Closures</a>
     <a href="/index.html">Back to Home</a>
-</body>
+    <script src="../scripts/task1.js"></script>
+  </body>
 </html>
